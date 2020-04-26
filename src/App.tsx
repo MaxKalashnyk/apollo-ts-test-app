@@ -1,12 +1,11 @@
 import React from 'react';
 import { AppContainer } from './styles';
-import { ApolloProvider } from '@apollo/react-hooks';
-import { client } from '.';
+import LaunchList from './components/LaunchList/';
+import LaunchProfile from './components/LaunchProfile/';
 
 export const App = () => (
-  <ApolloProvider client={client}>
-    <AppContainer>
-      <h2>My first Apollo app</h2>
-    </AppContainer>
-  </ApolloProvider>
+  <AppContainer>
+    <LaunchList />
+    <LaunchProfile />
+  </AppContainer>
 );
