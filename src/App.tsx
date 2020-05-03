@@ -10,8 +10,6 @@ const App = () => {
     setId(newId);
   }, []);
 
-  // const changeId = (newId: number) => setId(newId);
-
   return (
     <AppContainer>
       <LaunchList changeId={changeId} />

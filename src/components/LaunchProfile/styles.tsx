@@ -29,11 +29,13 @@ export const StatusFailed = styled.span`
 export const ImageList = styled.div`
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   margin-top: 40px;
   padding-bottom: 100px;
 `;
 
 export const Image = styled.img`
   width: 100%;
+  max-width: 100%;
+  height: auto;
 `;
