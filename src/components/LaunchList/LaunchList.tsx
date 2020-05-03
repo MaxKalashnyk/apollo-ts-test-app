@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IProps } from './types';
 import { LaunchListWrap, LaunchListItems, LaunchListItem } from './styles';
 
-const LaunchList: React.FC<IProps> = ({ data }) => (
+const LaunchList: React.FC<IProps> = ({ data, changeId }) => (
   <LaunchListWrap>
     <h3>Launches</h3>
     <LaunchListItems>
@@ -10,7 +10,10 @@ const LaunchList: React.FC<IProps> = ({ data }) => (
         data.launches.map(
           (launch, i) =>
             !!launch && (
-              <LaunchListItem key={i}>
+              <LaunchListItem
+                key={i}
+                onClick={() => changeId(launch.flight_number!)}
+              >
                 {launch.mission_name} ({launch.launch_year})
               </LaunchListItem>
             )

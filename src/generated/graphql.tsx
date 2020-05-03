@@ -18,7 +18,7 @@ export type Scalars = {
 };
 
 export type Query = {
-   __typename?: 'Query';
+  __typename?: 'Query';
   capsule?: Maybe<Capsule>;
   capsules?: Maybe<Array<Maybe<Capsule>>>;
   core?: Maybe<Core>;
@@ -44,11 +44,9 @@ export type Query = {
   ships?: Maybe<Array<Maybe<Ship>>>;
 };
 
-
 export type QueryCapsuleArgs = {
   capsule_serial: Scalars['String'];
 };
-
 
 export type QueryCapsulesArgs = {
   range?: Maybe<CapsuleRange>;
@@ -58,11 +56,9 @@ export type QueryCapsulesArgs = {
   sort?: Maybe<Scalars['String']>;
 };
 
-
 export type QueryCoreArgs = {
   core_serial: Scalars['String'];
 };
-
 
 export type QueryCoresArgs = {
   limit?: Maybe<Scalars['Int']>;
@@ -71,17 +67,14 @@ export type QueryCoresArgs = {
   sort?: Maybe<Scalars['String']>;
 };
 
-
 export type QueryDragonArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryDragonsArgs = {
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
 };
-
 
 export type QueryHistoryArgs = {
   limit?: Maybe<Scalars['Int']>;
@@ -91,22 +84,18 @@ export type QueryHistoryArgs = {
   id?: Maybe<Scalars['String']>;
 };
 
-
 export type QueryLandingpadArgs = {
   id?: Maybe<Scalars['String']>;
 };
-
 
 export type QueryLandingpadsArgs = {
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
 };
 
-
 export type QueryLaunchArgs = {
   id?: Maybe<Scalars['String']>;
 };
-
 
 export type QueryLaunchesArgs = {
   range?: Maybe<LaunchRange>;
@@ -117,33 +106,27 @@ export type QueryLaunchesArgs = {
   ids?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
-
 export type QueryLaunchpadArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryLaunchpadsArgs = {
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
 };
 
-
 export type QueryMissionArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryMissionsArgs = {
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
 };
 
-
 export type QueryPayloadArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryPayloadsArgs = {
   limit?: Maybe<Scalars['Int']>;
@@ -152,22 +135,18 @@ export type QueryPayloadsArgs = {
   sort?: Maybe<Scalars['String']>;
 };
 
-
 export type QueryRocketArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryRocketsArgs = {
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
 };
 
-
 export type QueryShipArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryShipsArgs = {
   limit?: Maybe<Scalars['Int']>;
@@ -177,7 +156,7 @@ export type QueryShipsArgs = {
 };
 
 export type Capsule = {
-   __typename?: 'Capsule';
+  __typename?: 'Capsule';
   capsule_serial?: Maybe<Scalars['String']>;
   capsule_id?: Maybe<Scalars['String']>;
   status?: Maybe<Scalars['String']>;
@@ -191,23 +170,23 @@ export type Capsule = {
 };
 
 export type BasicMission = {
-   __typename?: 'BasicMission';
+  __typename?: 'BasicMission';
   name?: Maybe<Scalars['String']>;
   flight?: Maybe<Scalars['Int']>;
 };
 
 export enum CapsuleRange {
   Past = 'past',
-  Upcoming = 'upcoming'
+  Upcoming = 'upcoming',
 }
 
 export enum Order {
   Asc = 'asc',
-  Desc = 'desc'
+  Desc = 'desc',
 }
 
 export type Core = {
-   __typename?: 'Core';
+  __typename?: 'Core';
   core_serial?: Maybe<Scalars['String']>;
   block?: Maybe<Scalars['Int']>;
   status?: Maybe<Scalars['String']>;
@@ -224,7 +203,7 @@ export type Core = {
 };
 
 export type Dragon = {
-   __typename?: 'Dragon';
+  __typename?: 'Dragon';
   id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
@@ -250,7 +229,7 @@ export type Dragon = {
 };
 
 export type HeatShield = {
-   __typename?: 'HeatShield';
+  __typename?: 'HeatShield';
   material?: Maybe<Scalars['String']>;
   size_meters?: Maybe<Scalars['Float']>;
   temp_degrees?: Maybe<Scalars['Int']>;
@@ -258,7 +237,7 @@ export type HeatShield = {
 };
 
 export type Thruster = {
-   __typename?: 'Thruster';
+  __typename?: 'Thruster';
   type?: Maybe<Scalars['String']>;
   amount?: Maybe<Scalars['Int']>;
   pods?: Maybe<Scalars['Int']>;
@@ -268,48 +247,48 @@ export type Thruster = {
 };
 
 export type Thrust = {
-   __typename?: 'Thrust';
+  __typename?: 'Thrust';
   kN?: Maybe<Scalars['Float']>;
   lbf?: Maybe<Scalars['Float']>;
 };
 
 export type Mass = {
-   __typename?: 'Mass';
+  __typename?: 'Mass';
   kg?: Maybe<Scalars['Int']>;
   lb?: Maybe<Scalars['Int']>;
 };
 
 export type PayloadVolume = {
-   __typename?: 'PayloadVolume';
+  __typename?: 'PayloadVolume';
   cubic_meters?: Maybe<Scalars['Int']>;
   cubic_feet?: Maybe<Scalars['Int']>;
 };
 
 export type PressurizedCapsule = {
-   __typename?: 'PressurizedCapsule';
+  __typename?: 'PressurizedCapsule';
   payload_volume?: Maybe<PayloadVolume>;
 };
 
 export type Trunk = {
-   __typename?: 'Trunk';
+  __typename?: 'Trunk';
   trunk_volume?: Maybe<PayloadVolume>;
   cargo?: Maybe<TrunkCargo>;
 };
 
 export type TrunkCargo = {
-   __typename?: 'TrunkCargo';
+  __typename?: 'TrunkCargo';
   solar_array?: Maybe<Scalars['Int']>;
   unpressurized_cargo?: Maybe<Scalars['Boolean']>;
 };
 
 export type Dimension = {
-   __typename?: 'Dimension';
+  __typename?: 'Dimension';
   meters?: Maybe<Scalars['Float']>;
   feet?: Maybe<Scalars['Float']>;
 };
 
 export type History = {
-   __typename?: 'History';
+  __typename?: 'History';
   id?: Maybe<Scalars['Int']>;
   title?: Maybe<Scalars['String']>;
   event_date_utc?: Maybe<Scalars['String']>;
@@ -320,14 +299,14 @@ export type History = {
 };
 
 export type HistoryLinks = {
-   __typename?: 'HistoryLinks';
+  __typename?: 'HistoryLinks';
   article?: Maybe<Scalars['String']>;
   reddit?: Maybe<Scalars['String']>;
   wikipedia?: Maybe<Scalars['String']>;
 };
 
 export type Info = {
-   __typename?: 'Info';
+  __typename?: 'Info';
   name?: Maybe<Scalars['String']>;
   founder?: Maybe<Scalars['String']>;
   founded?: Maybe<Scalars['Int']>;
@@ -345,14 +324,14 @@ export type Info = {
 };
 
 export type Headquarters = {
-   __typename?: 'Headquarters';
+  __typename?: 'Headquarters';
   address?: Maybe<Scalars['String']>;
   city?: Maybe<Scalars['String']>;
   state?: Maybe<Scalars['String']>;
 };
 
 export type Landingpad = {
-   __typename?: 'Landingpad';
+  __typename?: 'Landingpad';
   id?: Maybe<Scalars['String']>;
   full_name?: Maybe<Scalars['String']>;
   status?: Maybe<Scalars['String']>;
@@ -365,7 +344,7 @@ export type Landingpad = {
 };
 
 export type Location = {
-   __typename?: 'Location';
+  __typename?: 'Location';
   name?: Maybe<Scalars['String']>;
   region?: Maybe<Scalars['String']>;
   latitude?: Maybe<Scalars['Float']>;
@@ -373,7 +352,7 @@ export type Location = {
 };
 
 export type Launch = {
-   __typename?: 'Launch';
+  __typename?: 'Launch';
   flight_number?: Maybe<Scalars['Int']>;
   mission_id?: Maybe<Array<Maybe<Scalars['String']>>>;
   mission_name?: Maybe<Scalars['String']>;
@@ -399,7 +378,7 @@ export type Launch = {
 };
 
 export type LaunchRocket = {
-   __typename?: 'LaunchRocket';
+  __typename?: 'LaunchRocket';
   rocket_id?: Maybe<Scalars['String']>;
   rocket_name?: Maybe<Scalars['String']>;
   rocket_type?: Maybe<Scalars['String']>;
@@ -409,12 +388,12 @@ export type LaunchRocket = {
 };
 
 export type LaunchRocketFirstStage = {
-   __typename?: 'LaunchRocketFirstStage';
+  __typename?: 'LaunchRocketFirstStage';
   cores?: Maybe<Array<Maybe<LaunchRocketFirstStageCore>>>;
 };
 
 export type LaunchRocketFirstStageCore = {
-   __typename?: 'LaunchRocketFirstStageCore';
+  __typename?: 'LaunchRocketFirstStageCore';
   core_serial?: Maybe<Scalars['String']>;
   flight?: Maybe<Scalars['Int']>;
   block?: Maybe<Scalars['Int']>;
@@ -428,13 +407,13 @@ export type LaunchRocketFirstStageCore = {
 };
 
 export type LaunchRocketSecondStage = {
-   __typename?: 'LaunchRocketSecondStage';
+  __typename?: 'LaunchRocketSecondStage';
   block?: Maybe<Scalars['Int']>;
   payloads?: Maybe<Array<Maybe<Payload>>>;
 };
 
 export type Payload = {
-   __typename?: 'Payload';
+  __typename?: 'Payload';
   payload_id?: Maybe<Scalars['String']>;
   norad_id?: Maybe<Array<Maybe<Scalars['String']>>>;
   cap_serial?: Maybe<Scalars['String']>;
@@ -454,7 +433,7 @@ export type Payload = {
 };
 
 export type PayloadOrbitParams = {
-   __typename?: 'PayloadOrbitParams';
+  __typename?: 'PayloadOrbitParams';
   reference_system?: Maybe<Scalars['String']>;
   regime?: Maybe<Scalars['String']>;
   longitude?: Maybe<Scalars['Float']>;
@@ -473,7 +452,7 @@ export type PayloadOrbitParams = {
 };
 
 export type LaunchRocketFairings = {
-   __typename?: 'LaunchRocketFairings';
+  __typename?: 'LaunchRocketFairings';
   reused?: Maybe<Scalars['Boolean']>;
   recovery_attempt?: Maybe<Scalars['Boolean']>;
   recovered?: Maybe<Scalars['Boolean']>;
@@ -481,19 +460,19 @@ export type LaunchRocketFairings = {
 };
 
 export type LaunchTelemetry = {
-   __typename?: 'LaunchTelemetry';
+  __typename?: 'LaunchTelemetry';
   flight_club?: Maybe<Scalars['String']>;
 };
 
 export type LaunchSite = {
-   __typename?: 'LaunchSite';
+  __typename?: 'LaunchSite';
   site_id?: Maybe<Scalars['String']>;
   site_name?: Maybe<Scalars['String']>;
   site_name_long?: Maybe<Scalars['String']>;
 };
 
 export type LaunchLinks = {
-   __typename?: 'LaunchLinks';
+  __typename?: 'LaunchLinks';
   mission_patch?: Maybe<Scalars['String']>;
   mission_patch_small?: Maybe<Scalars['String']>;
   reddit_campaign?: Maybe<Scalars['String']>;
@@ -509,7 +488,7 @@ export type LaunchLinks = {
 };
 
 export type LaunchTimeline = {
-   __typename?: 'LaunchTimeline';
+  __typename?: 'LaunchTimeline';
   webcast_liftoff?: Maybe<Scalars['Int']>;
   go_for_prop_loading?: Maybe<Scalars['Int']>;
   rp1_loading?: Maybe<Scalars['Int']>;
@@ -555,11 +534,11 @@ export enum LaunchRange {
   Latest = 'latest',
   Next = 'next',
   Past = 'past',
-  Upcoming = 'upcoming'
+  Upcoming = 'upcoming',
 }
 
 export type Launchpad = {
-   __typename?: 'Launchpad';
+  __typename?: 'Launchpad';
   id?: Maybe<Scalars['Int']>;
   status?: Maybe<Scalars['String']>;
   location?: Maybe<Location>;
@@ -573,7 +552,7 @@ export type Launchpad = {
 };
 
 export type Mission = {
-   __typename?: 'Mission';
+  __typename?: 'Mission';
   mission_name?: Maybe<Scalars['String']>;
   mission_id?: Maybe<Scalars['String']>;
   manufacturers?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -585,7 +564,7 @@ export type Mission = {
 };
 
 export type Roadster = {
-   __typename?: 'Roadster';
+  __typename?: 'Roadster';
   name: Scalars['String'];
   launch_date_utc?: Maybe<Scalars['String']>;
   launch_date_unix?: Maybe<Scalars['Float']>;
@@ -612,7 +591,7 @@ export type Roadster = {
 };
 
 export type Rocket = {
-   __typename?: 'Rocket';
+  __typename?: 'Rocket';
   id?: Maybe<Scalars['Int']>;
   active?: Maybe<Scalars['Boolean']>;
   stages?: Maybe<Scalars['Int']>;
@@ -639,7 +618,7 @@ export type Rocket = {
 };
 
 export type RocketPayloadWeight = {
-   __typename?: 'RocketPayloadWeight';
+  __typename?: 'RocketPayloadWeight';
   id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   kg?: Maybe<Scalars['Float']>;
@@ -647,7 +626,7 @@ export type RocketPayloadWeight = {
 };
 
 export type RocketFirstStage = {
-   __typename?: 'RocketFirstStage';
+  __typename?: 'RocketFirstStage';
   reusable?: Maybe<Scalars['Boolean']>;
   engines?: Maybe<Scalars['Int']>;
   fuel_amount_tons?: Maybe<Scalars['Float']>;
@@ -657,7 +636,7 @@ export type RocketFirstStage = {
 };
 
 export type RocketSecondStage = {
-   __typename?: 'RocketSecondStage';
+  __typename?: 'RocketSecondStage';
   engines?: Maybe<Scalars['Int']>;
   fuel_amount_tons?: Maybe<Scalars['Float']>;
   burn_time_sec?: Maybe<Scalars['Int']>;
@@ -666,20 +645,20 @@ export type RocketSecondStage = {
 };
 
 export type RocketPayload = {
-   __typename?: 'RocketPayload';
+  __typename?: 'RocketPayload';
   option_1?: Maybe<Scalars['String']>;
   option_2?: Maybe<Scalars['String']>;
   composite_fairing?: Maybe<Fairing>;
 };
 
 export type Fairing = {
-   __typename?: 'Fairing';
+  __typename?: 'Fairing';
   height?: Maybe<Dimension>;
   diameter?: Maybe<Dimension>;
 };
 
 export type Engines = {
-   __typename?: 'Engines';
+  __typename?: 'Engines';
   number?: Maybe<Scalars['Int']>;
   type?: Maybe<Scalars['String']>;
   version?: Maybe<Scalars['String']>;
@@ -693,13 +672,13 @@ export type Engines = {
 };
 
 export type LandingLegs = {
-   __typename?: 'LandingLegs';
+  __typename?: 'LandingLegs';
   number?: Maybe<Scalars['Int']>;
   material?: Maybe<Scalars['String']>;
 };
 
 export type Ship = {
-   __typename?: 'Ship';
+  __typename?: 'Ship';
   ship_id?: Maybe<Scalars['String']>;
   ship_name?: Maybe<Scalars['String']>;
   ship_model?: Maybe<Scalars['String']>;
@@ -726,80 +705,117 @@ export type Ship = {
 };
 
 export type Position = {
-   __typename?: 'Position';
+  __typename?: 'Position';
   latitude?: Maybe<Scalars['Float']>;
   longitude?: Maybe<Scalars['Float']>;
 };
 
 export enum CacheControlScope {
   Public = 'PUBLIC',
-  Private = 'PRIVATE'
+  Private = 'PRIVATE',
 }
-
 
 export type LaunchListQueryVariables = {};
 
-
-export type LaunchListQuery = (
-  { __typename?: 'Query' }
-  & { launches?: Maybe<Array<Maybe<(
-    { __typename?: 'Launch' }
-    & Pick<Launch, 'flight_number' | 'mission_name' | 'launch_year'>
-  )>>> }
-);
+export type LaunchListQuery = { __typename?: 'Query' } & {
+  launches?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'Launch' } & Pick<
+          Launch,
+          'flight_number' | 'mission_name' | 'launch_year'
+        >
+      >
+    >
+  >;
+};
 
 export type LaunchProfileQueryVariables = {
   id: Scalars['String'];
 };
 
-
-export type LaunchProfileQuery = (
-  { __typename?: 'Query' }
-  & { launch?: Maybe<(
-    { __typename?: 'Launch' }
-    & Pick<Launch, 'flight_number' | 'mission_name' | 'launch_year' | 'launch_success' | 'details'>
-    & { launch_site?: Maybe<(
-      { __typename?: 'LaunchSite' }
-      & Pick<LaunchSite, 'site_name'>
-    )>, rocket?: Maybe<(
-      { __typename?: 'LaunchRocket' }
-      & Pick<LaunchRocket, 'rocket_name' | 'rocket_type'>
-    )>, links?: Maybe<(
-      { __typename?: 'LaunchLinks' }
-      & Pick<LaunchLinks, 'flickr_images'>
-    )> }
-  )> }
-);
-
+export type LaunchProfileQuery = { __typename?: 'Query' } & {
+  launch?: Maybe<
+    { __typename?: 'Launch' } & Pick<
+      Launch,
+      | 'flight_number'
+      | 'mission_name'
+      | 'launch_year'
+      | 'launch_success'
+      | 'details'
+    > & {
+        launch_site?: Maybe<
+          { __typename?: 'LaunchSite' } & Pick<LaunchSite, 'site_name'>
+        >;
+        rocket?: Maybe<
+          { __typename?: 'LaunchRocket' } & Pick<
+            LaunchRocket,
+            'rocket_name' | 'rocket_type'
+          >
+        >;
+        links?: Maybe<
+          { __typename?: 'LaunchLinks' } & Pick<LaunchLinks, 'flickr_images'>
+        >;
+      }
+  >;
+};
 
 export const LaunchListDocument = gql`
-    query LaunchList {
-  launches {
-    flight_number
-    mission_name
-    launch_year
+  query LaunchList {
+    launches {
+      flight_number
+      mission_name
+      launch_year
+    }
   }
-}
-    `;
-export type LaunchListComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<LaunchListQuery, LaunchListQueryVariables>, 'query'>;
+`;
+export type LaunchListComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    LaunchListQuery,
+    LaunchListQueryVariables
+  >,
+  'query'
+>;
 
-    export const LaunchListComponent = (props: LaunchListComponentProps) => (
-      <ApolloReactComponents.Query<LaunchListQuery, LaunchListQueryVariables> query={LaunchListDocument} {...props} />
-    );
-    
-export type LaunchListProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<LaunchListQuery, LaunchListQueryVariables>
-    } & TChildProps;
-export function withLaunchList<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
+export const LaunchListComponent = (props: LaunchListComponentProps) => (
+  <ApolloReactComponents.Query<LaunchListQuery, LaunchListQueryVariables>
+    query={LaunchListDocument}
+    {...props}
+  />
+);
+
+export type LaunchListProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    LaunchListQuery,
+    LaunchListQueryVariables
+  >;
+} &
+  TChildProps;
+export function withLaunchList<
   TProps,
-  LaunchListQuery,
-  LaunchListQueryVariables,
-  LaunchListProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, LaunchListQuery, LaunchListQueryVariables, LaunchListProps<TChildProps, TDataName>>(LaunchListDocument, {
-      alias: 'launchList',
-      ...operationOptions
-    });
-};
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    LaunchListQuery,
+    LaunchListQueryVariables,
+    LaunchListProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    LaunchListQuery,
+    LaunchListQueryVariables,
+    LaunchListProps<TChildProps, TDataName>
+  >(LaunchListDocument, {
+    alias: 'launchList',
+    ...operationOptions,
+  });
+}
 
 /**
  * __useLaunchListQuery__
@@ -816,55 +832,108 @@ export function withLaunchList<TProps, TChildProps = {}, TDataName extends strin
  *   },
  * });
  */
-export function useLaunchListQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<LaunchListQuery, LaunchListQueryVariables>) {
-        return ApolloReactHooks.useQuery<LaunchListQuery, LaunchListQueryVariables>(LaunchListDocument, baseOptions);
-      }
-export function useLaunchListLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<LaunchListQuery, LaunchListQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<LaunchListQuery, LaunchListQueryVariables>(LaunchListDocument, baseOptions);
-        }
+export function useLaunchListQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    LaunchListQuery,
+    LaunchListQueryVariables
+  >
+) {
+  return ApolloReactHooks.useQuery<LaunchListQuery, LaunchListQueryVariables>(
+    LaunchListDocument,
+    baseOptions
+  );
+}
+export function useLaunchListLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    LaunchListQuery,
+    LaunchListQueryVariables
+  >
+) {
+  return ApolloReactHooks.useLazyQuery<
+    LaunchListQuery,
+    LaunchListQueryVariables
+  >(LaunchListDocument, baseOptions);
+}
 export type LaunchListQueryHookResult = ReturnType<typeof useLaunchListQuery>;
-export type LaunchListLazyQueryHookResult = ReturnType<typeof useLaunchListLazyQuery>;
-export type LaunchListQueryResult = ApolloReactCommon.QueryResult<LaunchListQuery, LaunchListQueryVariables>;
+export type LaunchListLazyQueryHookResult = ReturnType<
+  typeof useLaunchListLazyQuery
+>;
+export type LaunchListQueryResult = ApolloReactCommon.QueryResult<
+  LaunchListQuery,
+  LaunchListQueryVariables
+>;
 export const LaunchProfileDocument = gql`
-    query LaunchProfile($id: String!) {
-  launch(id: $id) {
-    flight_number
-    mission_name
-    launch_year
-    launch_success
-    details
-    launch_site {
-      site_name
-    }
-    rocket {
-      rocket_name
-      rocket_type
-    }
-    links {
-      flickr_images
+  query LaunchProfile($id: String!) {
+    launch(id: $id) {
+      flight_number
+      mission_name
+      launch_year
+      launch_success
+      details
+      launch_site {
+        site_name
+      }
+      rocket {
+        rocket_name
+        rocket_type
+      }
+      links {
+        flickr_images
+      }
     }
   }
-}
-    `;
-export type LaunchProfileComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<LaunchProfileQuery, LaunchProfileQueryVariables>, 'query'> & ({ variables: LaunchProfileQueryVariables; skip?: boolean; } | { skip: boolean; });
+`;
+export type LaunchProfileComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    LaunchProfileQuery,
+    LaunchProfileQueryVariables
+  >,
+  'query'
+> &
+  (
+    | { variables: LaunchProfileQueryVariables; skip?: boolean }
+    | { skip: boolean }
+  );
 
-    export const LaunchProfileComponent = (props: LaunchProfileComponentProps) => (
-      <ApolloReactComponents.Query<LaunchProfileQuery, LaunchProfileQueryVariables> query={LaunchProfileDocument} {...props} />
-    );
-    
-export type LaunchProfileProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<LaunchProfileQuery, LaunchProfileQueryVariables>
-    } & TChildProps;
-export function withLaunchProfile<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
+export const LaunchProfileComponent = (props: LaunchProfileComponentProps) => (
+  <ApolloReactComponents.Query<LaunchProfileQuery, LaunchProfileQueryVariables>
+    query={LaunchProfileDocument}
+    {...props}
+  />
+);
+
+export type LaunchProfileProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    LaunchProfileQuery,
+    LaunchProfileQueryVariables
+  >;
+} &
+  TChildProps;
+export function withLaunchProfile<
   TProps,
-  LaunchProfileQuery,
-  LaunchProfileQueryVariables,
-  LaunchProfileProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, LaunchProfileQuery, LaunchProfileQueryVariables, LaunchProfileProps<TChildProps, TDataName>>(LaunchProfileDocument, {
-      alias: 'launchProfile',
-      ...operationOptions
-    });
-};
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    LaunchProfileQuery,
+    LaunchProfileQueryVariables,
+    LaunchProfileProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    LaunchProfileQuery,
+    LaunchProfileQueryVariables,
+    LaunchProfileProps<TChildProps, TDataName>
+  >(LaunchProfileDocument, {
+    alias: 'launchProfile',
+    ...operationOptions,
+  });
+}
 
 /**
  * __useLaunchProfileQuery__
@@ -882,12 +951,35 @@ export function withLaunchProfile<TProps, TChildProps = {}, TDataName extends st
  *   },
  * });
  */
-export function useLaunchProfileQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<LaunchProfileQuery, LaunchProfileQueryVariables>) {
-        return ApolloReactHooks.useQuery<LaunchProfileQuery, LaunchProfileQueryVariables>(LaunchProfileDocument, baseOptions);
-      }
-export function useLaunchProfileLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<LaunchProfileQuery, LaunchProfileQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<LaunchProfileQuery, LaunchProfileQueryVariables>(LaunchProfileDocument, baseOptions);
-        }
-export type LaunchProfileQueryHookResult = ReturnType<typeof useLaunchProfileQuery>;
-export type LaunchProfileLazyQueryHookResult = ReturnType<typeof useLaunchProfileLazyQuery>;
-export type LaunchProfileQueryResult = ApolloReactCommon.QueryResult<LaunchProfileQuery, LaunchProfileQueryVariables>;
+export function useLaunchProfileQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    LaunchProfileQuery,
+    LaunchProfileQueryVariables
+  >
+) {
+  return ApolloReactHooks.useQuery<
+    LaunchProfileQuery,
+    LaunchProfileQueryVariables
+  >(LaunchProfileDocument, baseOptions);
+}
+export function useLaunchProfileLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    LaunchProfileQuery,
+    LaunchProfileQueryVariables
+  >
+) {
+  return ApolloReactHooks.useLazyQuery<
+    LaunchProfileQuery,
+    LaunchProfileQueryVariables
+  >(LaunchProfileDocument, baseOptions);
+}
+export type LaunchProfileQueryHookResult = ReturnType<
+  typeof useLaunchProfileQuery
+>;
+export type LaunchProfileLazyQueryHookResult = ReturnType<
+  typeof useLaunchProfileLazyQuery
+>;
+export type LaunchProfileQueryResult = ApolloReactCommon.QueryResult<
+  LaunchProfileQuery,
+  LaunchProfileQueryVariables
+>;
