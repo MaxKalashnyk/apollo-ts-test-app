@@ -1,20 +1,28 @@
-import React, { useState, useCallback } from 'react';
-import { AppContainer } from './styles';
-import LaunchList from './components/LaunchList/';
-import LaunchProfile from './components/LaunchProfile/';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { routes } from './routes';
+import { NavBar } from './components/NavBar';
 
 const App = () => {
-  const [id, setId] = useState<number>(42);
-
-  const changeId = useCallback((newId) => {
-    setId(newId);
-  }, []);
-
   return (
-    <AppContainer>
-      <LaunchList changeId={changeId} />
-      <LaunchProfile id={id} />
-    </AppContainer>
+    <Router>
+      <NavBar routes={routes.filter((route) => route.isNavBar)} />
+      <Switch>
+        {routes.map((route) => {
+          // const component = route.isPrivate
+          //   ? ProtectedComponent(route.component)
+          //   : route.component;
+          return (
+            <Route
+              key={route.path}
+              exact={route.isExact}
+              path={route.path}
+              component={route.component}
+            />
+          );
+        })}
+      </Switch>
+    </Router>
   );
 };
 
