@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IProps } from './types';
 import { User } from '../User';
+import { useLoginDispatch, useLoginState } from '../../contexts/Login';
+import { userLogin } from '../../utils/userLogin';
+import { UserLogin } from '../../contexts/Login/types';
 
 const _onInit = (auth2: any) => {
   console.log('init OK', auth2);
@@ -9,13 +12,17 @@ const _onError = (err: any) => {
   console.log('error', err);
 };
 
-const defaultUserData = {
-  name: '',
-  imgUrl: '',
-};
-
 export const Login: React.FC<IProps> = () => {
+  const storageData = userLogin.getData();
+
+  const defaultUserData = {
+    fullName: storageData?.fullName ? storageData?.fullName : '',
+    imageURL: storageData?.imageURL ? storageData?.imageURL : '',
+  };
+
   const [userData, setUserData] = useState(defaultUserData);
+  const loginDispatch = useLoginDispatch();
+  // const loginState = useLoginState();
 
   const signIn = () => {
     const auth2 = window.gapi.auth2.getAuthInstance();
@@ -23,24 +30,34 @@ export const Login: React.FC<IProps> = () => {
       const profile = googleUser.getBasicProfile();
 
       setUserData({
-        name: profile.getName(),
-        imgUrl: profile.getImageUrl(),
+        fullName: profile.getName(),
+        imageURL: profile.getImageUrl(),
       });
 
-      // console.log('ID: ' + profile.getId());
-      // console.log('Full Name: ' + profile.getName());
-      // console.log('Given Name: ' + profile.getGivenName());
-      // console.log('Family Name: ' + profile.getFamilyName());
-      // console.log('Image URL: ' + profile.getImageUrl());
-      // console.log('Email: ' + profile.getEmail());
-      // const id_token = googleUser.getAuthResponse().id_token;
-      // console.log('ID Token: ' + id_token);
+      const loginData: UserLogin = {
+        authToken: googleUser.getAuthResponse().id_token,
+        email: profile.getEmail(),
+        id: profile.getId(),
+        imageURL: profile.getImageUrl(),
+        fullName: profile.getName(),
+      };
+
+      loginDispatch({
+        type: 'login',
+        payload: loginData,
+      });
+
+      userLogin.setData(loginData);
     });
   };
 
   const signOut = () => {
     const auth2 = window.gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
+      loginDispatch({
+        type: 'logout',
+      });
+      userLogin.clearData();
       setUserData(defaultUserData);
     });
   };
@@ -55,13 +72,16 @@ export const Login: React.FC<IProps> = () => {
     });
   }, []);
 
-  const { name, imgUrl } = userData;
+  const { fullName, imageURL } = userData;
+
+  // console.log('loginState', loginState);
+  console.log('userData', userData);
 
   return (
     <div>
-      {!name && <button onClick={signIn}>Log in</button>}
-      {!!name && <button onClick={signOut}>Log out</button>}
-      {!!name && <User name={name} imgUrl={imgUrl} />}
+      {!fullName ? <button onClick={signIn}>Log in</button> : null}
+      {fullName ? <button onClick={signOut}>Log out</button> : null}
+      {fullName && imageURL ? <User name={fullName} imgUrl={imageURL} /> : null}
     </div>
   );
 };

@@ -2,7 +2,11 @@ import { Route, ROUTES } from './types';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { NotFound } from './pages/NotFound';
-import { withHeader } from './utils';
+import { withHeader } from './utils/withTheme';
+
+// const component = route.isPrivate
+//   ? ProtectedComponent(route.component)
+//   : route.component;
 
 export const routes: Route[] = [
   {
