@@ -1,28 +1,23 @@
-import Home from './pages/Home';
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
-import Profile from './pages/Profile';
-import { Route } from './types';
+import { Route, ROUTES } from './types';
+import { Home } from './pages/Home';
+import { About } from './pages/About';
+import { NotFound } from './pages/NotFound';
+import { withHeader } from './utils';
 
 export const routes: Route[] = [
   {
     name: 'Home',
-    path: '/',
+    path: ROUTES.Home,
     isExact: true,
     isNavBar: true,
-    component: Home,
+    component: withHeader(Home),
   },
   {
-    name: 'Profile',
-    path: '/profile',
+    name: 'About',
+    path: ROUTES.About,
     isNavBar: true,
     isPrivate: true,
-    component: Profile,
-  },
-  {
-    name: 'Login',
-    path: '/login',
-    component: Login,
+    component: withHeader(About),
   },
   {
     name: 'NotFound',

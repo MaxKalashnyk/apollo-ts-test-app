@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { routes } from './routes';
-import { NavBar } from './components/NavBar';
-import { User } from './components/User';
+import React, { useState, useEffect } from 'react';
+import { IProps } from './types';
+import { User } from '../User';
 
 const _onInit = (auth2: any) => {
   console.log('init OK', auth2);
@@ -16,7 +14,7 @@ const defaultUserData = {
   imgUrl: '',
 };
 
-const App = () => {
+export const Login: React.FC<IProps> = () => {
   const [userData, setUserData] = useState(defaultUserData);
 
   const signIn = () => {
@@ -60,30 +58,10 @@ const App = () => {
   const { name, imgUrl } = userData;
 
   return (
-    <Router>
-      <NavBar routes={routes.filter((route) => route.isNavBar)} />
-      <div>
-        {!name && <button onClick={signIn}>Log in</button>}
-        {!!name && <button onClick={signOut}>Log out</button>}
-        {!!name && <User name={name} imgUrl={imgUrl} />}
-      </div>
-      <Switch>
-        {routes.map((route) => {
-          // const component = route.isPrivate
-          //   ? ProtectedComponent(route.component)
-          //   : route.component;
-          return (
-            <Route
-              key={route.path}
-              exact={route.isExact}
-              path={route.path}
-              component={route.component}
-            />
-          );
-        })}
-      </Switch>
-    </Router>
+    <div>
+      {!name && <button onClick={signIn}>Log in</button>}
+      {!!name && <button onClick={signOut}>Log out</button>}
+      {!!name && <User name={name} imgUrl={imgUrl} />}
+    </div>
   );
 };
-
-export default App;
