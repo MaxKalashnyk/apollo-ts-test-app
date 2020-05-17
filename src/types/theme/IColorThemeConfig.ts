@@ -11,4 +11,7 @@ export interface IColorThemeConfig
     red: Readonly<{
       error: string;
     }>;
+    americanPalette: Readonly<{
+      greenDardner: string;
+    }>;
   }> {}

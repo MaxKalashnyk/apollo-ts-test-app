@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrap = styled.div`
-  height: 100vh;
-  max-height: 100%;
   width: calc(100vw - 300px);
-  overflow: hidden auto;
   padding-left: 20px;
   padding-right: 20px;
 `;

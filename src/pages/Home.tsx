@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react';
-import { AppContainer } from '../styles';
-import LaunchList from '../components/LaunchList';
-import LaunchProfile from '../components/LaunchProfile';
+import { HomeWrap } from '../styles';
+import { LaunchList } from '../components/LaunchList';
+import { LaunchProfile } from '../components/LaunchProfile';
 
-const Home: React.FC = () => {
+export const Home: React.FC = () => {
   const [id, setId] = useState<number>(42);
 
   const changeId = useCallback((newId) => {
@@ -11,12 +11,10 @@ const Home: React.FC = () => {
   }, []);
   return (
     <>
-      <AppContainer>
+      <HomeWrap>
         <LaunchList changeId={changeId} />
         <LaunchProfile id={id} />
-      </AppContainer>
+      </HomeWrap>
     </>
   );
 };
-
-export default Home;

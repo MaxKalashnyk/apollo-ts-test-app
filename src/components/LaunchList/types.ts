@@ -1,9 +1,3 @@
-import { LaunchListQuery } from '../../generated/graphql';
-
-export interface OwnProps {
+export interface IProps {
   changeId: (id: number) => void;
-}
-
-export interface IProps extends OwnProps {
-  data: LaunchListQuery;
 }

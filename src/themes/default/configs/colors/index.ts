@@ -12,4 +12,7 @@ export const colorThemeConfig: IColorThemeConfig = {
   red: {
     error: '#be0000',
   },
+  americanPalette: {
+    greenDardner: '#74b9ff',
+  },
 };
