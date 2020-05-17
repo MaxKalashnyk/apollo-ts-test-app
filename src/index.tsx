@@ -8,6 +8,7 @@ import { DefaultThemeProvider } from './themes/provider/provider';
 import { defaultTheme } from './themes/default';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { routes } from './routes';
+import { LoginContext } from './contexts/Login/Login';
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   uri: 'https://spacexdata.herokuapp.com/graphql',
@@ -18,23 +19,22 @@ ReactDOM.render(
   <ApolloProvider client={client}>
     <ApolloHooksProvider client={client}>
       <DefaultThemeProvider theme={defaultTheme}>
-        <Router>
-          <Switch>
-            {routes.map(({ path, isExact, component }) => {
-              // const component = route.isPrivate
-              //   ? ProtectedComponent(route.component)
-              //   : route.component;
-              return (
-                <Route
-                  key={path}
-                  exact={isExact}
-                  path={path}
-                  component={component}
-                />
-              );
-            })}
-          </Switch>
-        </Router>
+        <LoginContext>
+          <Router>
+            <Switch>
+              {routes.map(({ path, isExact, component }) => {
+                return (
+                  <Route
+                    key={path}
+                    exact={isExact}
+                    path={path}
+                    component={component}
+                  />
+                );
+              })}
+            </Switch>
+          </Router>
+        </LoginContext>
       </DefaultThemeProvider>
     </ApolloHooksProvider>
   </ApolloProvider>,
