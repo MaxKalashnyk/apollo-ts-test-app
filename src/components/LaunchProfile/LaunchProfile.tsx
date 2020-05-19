@@ -8,8 +8,8 @@ import {
   StatusSuccess,
   StatusFailed,
   ImageList,
-  Image,
 } from './styles';
+import LazyImage from '../LazyImage/LazyImage';
 
 export const LaunchProfile: React.FC<IProps> = ({ id }) => {
   const { data, error, loading, refetch } = useLaunchProfileQuery({
@@ -55,7 +55,7 @@ export const LaunchProfile: React.FC<IProps> = ({ id }) => {
       {!!data?.launch.links && !!data?.launch.links.flickr_images && (
         <ImageList>
           {data?.launch.links.flickr_images.map((image: any) =>
-            image ? <Image src={image} key={image} /> : null
+            image ? <LazyImage imgSrc={image} key={image} /> : null
           )}
         </ImageList>
       )}
