@@ -4,6 +4,7 @@ export const Wrap = styled.div`
   width: calc(100vw - 300px);
   padding-left: 20px;
   padding-right: 20px;
+  overflow-y: auto;
 `;
 
 export const Status = styled.div`
@@ -29,10 +30,4 @@ export const ImageList = styled.div`
   grid-template-columns: repeat(3, 1fr);
   margin-top: 40px;
   padding-bottom: 100px;
-`;
-
-export const Image = styled.img`
-  width: 100%;
-  max-width: 100%;
-  height: auto;
 `;
