@@ -29,8 +29,6 @@ export const Login: React.FC<IProps> = () => {
   const loginDispatch = useLoginDispatch();
   const loginState = useLoginState();
 
-  console.log('loginState context', loginState);
-
   const signIn = () => {
     const auth2 = window.gapi.auth2.getAuthInstance();
     auth2.signIn().then((googleUser) => {
@@ -57,11 +55,10 @@ export const Login: React.FC<IProps> = () => {
   const signOut = () => {
     const auth2 = window.gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-      console.log('signed out');
-    });
-    userLogin.clearData();
-    loginDispatch({
-      type: 'logout',
+      userLogin.clearData();
+      loginDispatch({
+        type: 'logout',
+      });
     });
   };
 
