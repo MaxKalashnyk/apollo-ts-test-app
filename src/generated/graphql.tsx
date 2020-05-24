@@ -771,6 +771,38 @@ export type LaunchProfileQuery = (
   )> }
 );
 
+export type RocketsListQueryVariables = {};
+
+
+export type RocketsListQuery = (
+  { __typename?: 'Query' }
+  & { rockets?: Maybe<Array<Maybe<(
+    { __typename?: 'Rocket' }
+    & Pick<Rocket, 'id' | 'active' | 'cost_per_launch' | 'first_flight' | 'country' | 'company' | 'wikipedia' | 'description' | 'rocket_id' | 'rocket_name' | 'rocket_type' | 'flickr_images'>
+    & { height?: Maybe<(
+      { __typename?: 'Dimension' }
+      & Pick<Dimension, 'meters'>
+    )>, diameter?: Maybe<(
+      { __typename?: 'Dimension' }
+      & Pick<Dimension, 'meters'>
+    )>, mass?: Maybe<(
+      { __typename?: 'Mass' }
+      & Pick<Mass, 'kg'>
+    )> }
+  )>>> }
+);
+
+export type ShipsListQueryVariables = {};
+
+
+export type ShipsListQuery = (
+  { __typename?: 'Query' }
+  & { ships?: Maybe<Array<Maybe<(
+    { __typename?: 'Ship' }
+    & Pick<Ship, 'ship_id' | 'ship_name' | 'ship_model' | 'ship_type' | 'successful_landings' | 'attempted_landings' | 'url' | 'image'>
+  )>>> }
+);
+
 
 export const LaunchListDocument = gql`
     query LaunchList {
@@ -891,3 +923,132 @@ export function useLaunchProfileLazyQuery(baseOptions?: ApolloReactHooks.LazyQue
 export type LaunchProfileQueryHookResult = ReturnType<typeof useLaunchProfileQuery>;
 export type LaunchProfileLazyQueryHookResult = ReturnType<typeof useLaunchProfileLazyQuery>;
 export type LaunchProfileQueryResult = ApolloReactCommon.QueryResult<LaunchProfileQuery, LaunchProfileQueryVariables>;
+export const RocketsListDocument = gql`
+    query RocketsList {
+  rockets {
+    id
+    active
+    cost_per_launch
+    first_flight
+    country
+    company
+    height {
+      meters
+    }
+    diameter {
+      meters
+    }
+    mass {
+      kg
+    }
+    wikipedia
+    description
+    rocket_id
+    rocket_name
+    rocket_type
+    flickr_images
+  }
+}
+    `;
+export type RocketsListComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<RocketsListQuery, RocketsListQueryVariables>, 'query'>;
+
+    export const RocketsListComponent = (props: RocketsListComponentProps) => (
+      <ApolloReactComponents.Query<RocketsListQuery, RocketsListQueryVariables> query={RocketsListDocument} {...props} />
+    );
+    
+export type RocketsListProps<TChildProps = {}, TDataName extends string = 'data'> = {
+      [key in TDataName]: ApolloReactHoc.DataValue<RocketsListQuery, RocketsListQueryVariables>
+    } & TChildProps;
+export function withRocketsList<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
+  TProps,
+  RocketsListQuery,
+  RocketsListQueryVariables,
+  RocketsListProps<TChildProps, TDataName>>) {
+    return ApolloReactHoc.withQuery<TProps, RocketsListQuery, RocketsListQueryVariables, RocketsListProps<TChildProps, TDataName>>(RocketsListDocument, {
+      alias: 'rocketsList',
+      ...operationOptions
+    });
+};
+
+/**
+ * __useRocketsListQuery__
+ *
+ * To run a query within a React component, call `useRocketsListQuery` and pass it any options that fit your needs.
+ * When your component renders, `useRocketsListQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useRocketsListQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useRocketsListQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<RocketsListQuery, RocketsListQueryVariables>) {
+        return ApolloReactHooks.useQuery<RocketsListQuery, RocketsListQueryVariables>(RocketsListDocument, baseOptions);
+      }
+export function useRocketsListLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<RocketsListQuery, RocketsListQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<RocketsListQuery, RocketsListQueryVariables>(RocketsListDocument, baseOptions);
+        }
+export type RocketsListQueryHookResult = ReturnType<typeof useRocketsListQuery>;
+export type RocketsListLazyQueryHookResult = ReturnType<typeof useRocketsListLazyQuery>;
+export type RocketsListQueryResult = ApolloReactCommon.QueryResult<RocketsListQuery, RocketsListQueryVariables>;
+export const ShipsListDocument = gql`
+    query ShipsList {
+  ships {
+    ship_id
+    ship_name
+    ship_model
+    ship_type
+    successful_landings
+    attempted_landings
+    url
+    image
+  }
+}
+    `;
+export type ShipsListComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<ShipsListQuery, ShipsListQueryVariables>, 'query'>;
+
+    export const ShipsListComponent = (props: ShipsListComponentProps) => (
+      <ApolloReactComponents.Query<ShipsListQuery, ShipsListQueryVariables> query={ShipsListDocument} {...props} />
+    );
+    
+export type ShipsListProps<TChildProps = {}, TDataName extends string = 'data'> = {
+      [key in TDataName]: ApolloReactHoc.DataValue<ShipsListQuery, ShipsListQueryVariables>
+    } & TChildProps;
+export function withShipsList<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
+  TProps,
+  ShipsListQuery,
+  ShipsListQueryVariables,
+  ShipsListProps<TChildProps, TDataName>>) {
+    return ApolloReactHoc.withQuery<TProps, ShipsListQuery, ShipsListQueryVariables, ShipsListProps<TChildProps, TDataName>>(ShipsListDocument, {
+      alias: 'shipsList',
+      ...operationOptions
+    });
+};
+
+/**
+ * __useShipsListQuery__
+ *
+ * To run a query within a React component, call `useShipsListQuery` and pass it any options that fit your needs.
+ * When your component renders, `useShipsListQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useShipsListQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useShipsListQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<ShipsListQuery, ShipsListQueryVariables>) {
+        return ApolloReactHooks.useQuery<ShipsListQuery, ShipsListQueryVariables>(ShipsListDocument, baseOptions);
+      }
+export function useShipsListLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<ShipsListQuery, ShipsListQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<ShipsListQuery, ShipsListQueryVariables>(ShipsListDocument, baseOptions);
+        }
+export type ShipsListQueryHookResult = ReturnType<typeof useShipsListQuery>;
+export type ShipsListLazyQueryHookResult = ReturnType<typeof useShipsListLazyQuery>;
+export type ShipsListQueryResult = ApolloReactCommon.QueryResult<ShipsListQuery, ShipsListQueryVariables>;
