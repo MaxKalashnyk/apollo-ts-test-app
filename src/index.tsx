@@ -7,8 +7,13 @@ import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
 import { DefaultThemeProvider } from './themes/provider/provider';
 import { defaultTheme } from './themes/default';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { routes } from './routes';
 import { LoginContext } from './contexts/Login/Login';
+import { ROUTES } from './types';
+import { withHeader } from './utils/withTheme';
+import { Home } from './pages/Home';
+import { About } from './pages/About';
+import { NotFound } from './pages/NotFound';
+import { Dashboard } from './components/Dashboard';
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   uri: 'https://spacexdata.herokuapp.com/graphql',
@@ -22,16 +27,22 @@ ReactDOM.render(
         <LoginContext>
           <Router>
             <Switch>
-              {routes.map(({ path, isExact, component }) => {
-                return (
-                  <Route
-                    key={path}
-                    exact={isExact}
-                    path={path}
-                    component={component}
-                  />
-                );
-              })}
+              <Route
+                exact={true}
+                path={ROUTES.Home}
+                component={withHeader(Home)}
+              />
+              <Route
+                exact={true}
+                path={ROUTES.About}
+                component={withHeader(About)}
+              />
+              <Route
+                exact
+                path={ROUTES.Dashboard}
+                component={withHeader(Dashboard)}
+              />
+              <Route exact={true} path="*" component={NotFound} />
             </Switch>
           </Router>
         </LoginContext>
