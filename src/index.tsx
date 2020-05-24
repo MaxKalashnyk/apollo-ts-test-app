@@ -12,7 +12,6 @@ import { ROUTES } from './types';
 import { withHeader } from './utils/withTheme';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
-import { Unauthorized } from './pages/Unauthorized';
 import { NotFound } from './pages/NotFound';
 import { Dashboard } from './components/Dashboard';
 
@@ -42,11 +41,6 @@ ReactDOM.render(
                 exact
                 path={ROUTES.Dashboard}
                 component={withHeader(Dashboard)}
-              />
-              <Route
-                exact={true}
-                path={ROUTES.Unauthorized}
-                component={Unauthorized}
               />
               <Route exact={true} path="*" component={NotFound} />
             </Switch>
