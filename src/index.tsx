@@ -1,17 +1,53 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
+import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
+import { DefaultThemeProvider } from './themes/provider/provider';
+import { defaultTheme } from './themes/default';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { LoginContext } from './contexts/Login/Login';
+import { ROUTES } from './types';
+import { withHeader } from './utils/withTheme';
+import { Home } from './pages/Home';
+import { About } from './pages/About';
+import { NotFound } from './pages/NotFound';
+import { Dashboard } from './components/Dashboard';
+
+const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+  uri: 'https://spacexdata.herokuapp.com/graphql',
+  cache: new InMemoryCache(),
+});
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ApolloProvider client={client}>
+    <ApolloHooksProvider client={client}>
+      <DefaultThemeProvider theme={defaultTheme}>
+        <LoginContext>
+          <Router>
+            <Switch>
+              <Route
+                exact={true}
+                path={ROUTES.Home}
+                component={withHeader(Home)}
+              />
+              <Route
+                exact={true}
+                path={ROUTES.About}
+                component={withHeader(About)}
+              />
+              <Route
+                exact
+                path={ROUTES.Dashboard}
+                component={withHeader(Dashboard)}
+              />
+              <Route exact={true} path="*" component={NotFound} />
+            </Switch>
+          </Router>
+        </LoginContext>
+      </DefaultThemeProvider>
+    </ApolloHooksProvider>
+  </ApolloProvider>,
   document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
