@@ -9,7 +9,7 @@ export const Wrap = styled.div`
   min-height: 150px;
 `;
 
-// Animation was tooked from https://loading.io/css/
+// An animation was taken from https://loading.io/css/
 
 const preloaderAnim = keyframes`
   0% {
@@ -39,7 +39,7 @@ export const Loader = styled.div`
       width: 6px;
       height: 18px;
       border-radius: 20%;
-      background: #f00;
+      background: ${(props) => props.theme.color.americanPalette.greenDardner};
     }
 
     &:nth-child(1) {

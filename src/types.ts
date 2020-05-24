@@ -3,4 +3,6 @@ export enum ROUTES {
   About = '/about',
   Unauthorized = '/unauthorized',
   Dashboard = '/dashboard',
+  Rockets = '/rockets',
+  Ships = '/ships',
 }

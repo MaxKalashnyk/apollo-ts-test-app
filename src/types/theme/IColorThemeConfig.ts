@@ -13,5 +13,9 @@ export interface IColorThemeConfig
     }>;
     americanPalette: Readonly<{
       greenDardner: string;
+      cityLights: string;
+      brightYarrow: string;
+      pinkGlamour: string;
+      lighGreenishBlue: string;
     }>;
   }> {}
