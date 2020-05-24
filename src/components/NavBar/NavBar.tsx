@@ -19,11 +19,23 @@ export const NavBar: React.FC<IProps> = ({ isLogin }) => {
           </NavLink>
         </ListItem>
         {isLogin ? (
-          <ListItem>
-            <NavLink exact={true} to={ROUTES.Dashboard}>
-              Dashboard
-            </NavLink>
-          </ListItem>
+          <>
+            <ListItem>
+              <NavLink exact={true} to={ROUTES.Dashboard}>
+                Dashboard
+              </NavLink>
+            </ListItem>
+            <ListItem>
+              <NavLink exact={true} to={ROUTES.Rockets}>
+                Rockets
+              </NavLink>
+            </ListItem>
+            <ListItem>
+              <NavLink exact={true} to={ROUTES.Ships}>
+                Ships
+              </NavLink>
+            </ListItem>
+          </>
         ) : null}
       </List>
     </Nav>

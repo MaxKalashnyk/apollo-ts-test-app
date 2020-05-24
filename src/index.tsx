@@ -14,6 +14,8 @@ import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { NotFound } from './pages/NotFound';
 import { Dashboard } from './components/Dashboard';
+import { Rockets } from './pages/Rockets';
+import { Ships } from './pages/Ships';
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   uri: 'https://spacexdata.herokuapp.com/graphql',
@@ -42,6 +44,12 @@ ReactDOM.render(
                 path={ROUTES.Dashboard}
                 component={withHeader(Dashboard)}
               />
+              <Route
+                exact
+                path={ROUTES.Rockets}
+                component={withHeader(Rockets)}
+              />
+              <Route exact path={ROUTES.Ships} component={withHeader(Ships)} />
               <Route exact={true} path="*" component={NotFound} />
             </Switch>
           </Router>

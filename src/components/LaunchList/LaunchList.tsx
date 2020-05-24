@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { IProps } from './types';
-import { LaunchListWrap, LaunchListItems, LaunchListItem } from './styles';
+import {
+  LaunchListWrap,
+  LaunchListItems,
+  LaunchListItem,
+  Title,
+} from './styles';
 import { useLaunchListQuery } from '../../generated/graphql';
 
 export const LaunchList: React.FC<IProps> = ({ changeId }) => {
@@ -16,7 +21,7 @@ export const LaunchList: React.FC<IProps> = ({ changeId }) => {
 
   return (
     <LaunchListWrap>
-      <h3>Launches</h3>
+      <Title>Launches</Title>
       <LaunchListItems>
         {!!data.launches &&
           data.launches.map(
