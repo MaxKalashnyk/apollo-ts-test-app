@@ -1,7 +1,7 @@
-import { UserLogin } from '../contexts/Login/types';
+import { LoginState } from '../contexts/Login/types';
 
 export interface UserLoginMethods {
-  setData: (loginState: UserLogin) => void;
+  setData: (loginState: LoginState) => void;
   clearData: () => void;
-  getData: () => UserLogin | null;
+  getData: () => LoginState | null;
 }

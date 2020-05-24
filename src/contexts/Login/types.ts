@@ -2,16 +2,13 @@ export interface ILoginContext {
   children?: React.ReactNode;
 }
 
-export interface UserLogin {
+export interface LoginState {
+  isLoggedIn: boolean;
   authToken?: string;
   email?: string;
   id?: string;
   imageURL?: string;
   fullName?: string;
-}
-
-export interface LoginState extends UserLogin {
-  isLoggedIn: boolean;
 }
 
 export type LoginActionType = 'login' | 'logout' | 'noop';

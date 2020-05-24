@@ -1,20 +1,30 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { IProps } from './types';
-import { Route } from '../../types';
 import { Nav, List, ListItem } from './styles';
+import { ROUTES } from '../../types';
+import { IProps } from './types';
 
-export const NavBar: React.FC<IProps> = ({ routes }) => {
+export const NavBar: React.FC<IProps> = ({ isLogin }) => {
   return (
     <Nav>
       <List>
-        {routes.map((route: Route) => (
-          <ListItem key={route.path}>
-            <NavLink exact={route.isExact} to={route.path}>
-              {route.name}
+        <ListItem>
+          <NavLink exact={true} to={ROUTES.Home}>
+            Home
+          </NavLink>
+        </ListItem>
+        <ListItem>
+          <NavLink exact={true} to={ROUTES.About}>
+            About
+          </NavLink>
+        </ListItem>
+        {isLogin ? (
+          <ListItem>
+            <NavLink exact={true} to={ROUTES.Dashboard}>
+              Dashboard
             </NavLink>
           </ListItem>
-        ))}
+        ) : null}
       </List>
     </Nav>
   );
