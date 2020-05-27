@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { IProps } from './types';
 import { User } from '../User';
 import { userLogin } from '../../utils/userLogin';
@@ -29,7 +29,7 @@ export const Login: React.FC<IProps> = () => {
   const loginDispatch = useLoginDispatch();
   const loginState = useLoginState();
 
-  const signIn = () => {
+  const signIn = useCallback(() => {
     const auth2 = window.gapi.auth2.getAuthInstance();
     auth2.signIn().then((googleUser) => {
       const profile = googleUser.getBasicProfile();
@@ -50,9 +50,9 @@ export const Login: React.FC<IProps> = () => {
 
       userLogin.setData({ ...loginData });
     });
-  };
+  }, [loginDispatch]);
 
-  const signOut = () => {
+  const signOut = useCallback(() => {
     const auth2 = window.gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       userLogin.clearData();
@@ -60,7 +60,7 @@ export const Login: React.FC<IProps> = () => {
         type: 'logout',
       });
     });
-  };
+  }, [loginDispatch]);
 
   useEffect(() => {
     window.gapi.load('auth2', function () {
