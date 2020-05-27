@@ -8,5 +8,6 @@ export const Wrap = styled.div`
 export const Inner = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: ${(props) => props.theme.spacing(5)} 0;
 `;
