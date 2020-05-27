@@ -3,7 +3,7 @@ import { desktop, fromDesktop, untilDesktop } from './breakpoints';
 import { layoutThemeConfig } from './configs/layout';
 import { colorThemeConfig } from './configs/colors';
 import { baseSpacingPixelValue, spacing } from './spacing';
-import { fontWeight } from './configs/typography';
+import { fontWeight, fontSize } from './configs/typography';
 
 export const defaultTheme: DefaultTheme = {
   color: colorThemeConfig,
@@ -19,6 +19,7 @@ export const defaultTheme: DefaultTheme = {
   typography: {
     font: {
       weight: { ...fontWeight },
+      size: { ...fontSize },
     },
   },
   layout: layoutThemeConfig,

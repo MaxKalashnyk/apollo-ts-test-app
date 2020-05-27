@@ -1,6 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Nav, List, ListItem } from './styles';
+import { Nav, List, ListItem, StyledNavLink } from './styles';
 import { ROUTES } from '../../types';
 import { IProps } from './types';
 
@@ -9,31 +8,47 @@ export const NavBar: React.FC<IProps> = ({ isLogin }) => {
     <Nav>
       <List>
         <ListItem>
-          <NavLink exact={true} to={ROUTES.Home}>
+          <StyledNavLink exact={true} activeClassName="active" to={ROUTES.Home}>
             Home
-          </NavLink>
+          </StyledNavLink>
         </ListItem>
         <ListItem>
-          <NavLink exact={true} to={ROUTES.About}>
+          <StyledNavLink
+            exact={true}
+            activeClassName="active"
+            to={ROUTES.About}
+          >
             About
-          </NavLink>
+          </StyledNavLink>
         </ListItem>
         {isLogin ? (
           <>
             <ListItem>
-              <NavLink exact={true} to={ROUTES.Dashboard}>
+              <StyledNavLink
+                exact={true}
+                activeClassName="active"
+                to={ROUTES.Dashboard}
+              >
                 Dashboard
-              </NavLink>
+              </StyledNavLink>
             </ListItem>
             <ListItem>
-              <NavLink exact={true} to={ROUTES.Rockets}>
+              <StyledNavLink
+                exact={true}
+                activeClassName="active"
+                to={ROUTES.Rockets}
+              >
                 Rockets
-              </NavLink>
+              </StyledNavLink>
             </ListItem>
             <ListItem>
-              <NavLink exact={true} to={ROUTES.Ships}>
+              <StyledNavLink
+                exact={true}
+                activeClassName="active"
+                to={ROUTES.Ships}
+              >
                 Ships
-              </NavLink>
+              </StyledNavLink>
             </ListItem>
           </>
         ) : null}

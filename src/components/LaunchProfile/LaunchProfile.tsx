@@ -8,51 +8,50 @@ import {
   StatusSuccess,
   StatusFailed,
   ImageList,
+  Details,
+  FlightNumber,
+  Message,
 } from './styles';
 import LazyImage from '../LazyImage/LazyImage';
 
 export const LaunchProfile: React.FC<IProps> = ({ id }) => {
-  const { data, error, loading, refetch } = useLaunchProfileQuery({
+  const { data, error, loading } = useLaunchProfileQuery({
     variables: { id: String(id) },
   });
 
-  React.useEffect(() => {
-    refetch();
-  }, [id]);
-
   if (loading) {
-    return <div>Loading...</div>;
+    return <Message>Loading...</Message>;
   }
 
   if (error) {
-    return <div>ERROR</div>;
+    return <Message>ERROR</Message>;
   }
 
   if (!data) {
-    return <div>Select a flight from the panel</div>;
+    return <Message>Select a flight from the panel</Message>;
   }
 
   if (!data.launch) {
-    return <div>No launch available</div>;
+    return <Message>No launch available</Message>;
   }
 
   return data ? (
     <Wrap>
+      <Title>
+        {data?.launch.mission_name}
+        {data?.launch.rocket &&
+          ` (${data?.launch.rocket.rocket_name} | ${data?.launch.rocket.rocket_type})`}
+      </Title>
       <Status>
-        <span>Flight {data?.launch?.flight_number}: </span>
+        <FlightNumber>Flight {data?.launch?.flight_number}: </FlightNumber>
         {data?.launch.launch_success ? (
           <StatusSuccess>Success</StatusSuccess>
         ) : (
           <StatusFailed>Failed</StatusFailed>
         )}
       </Status>
-      <Title>
-        {data?.launch.mission_name}
-        {data?.launch.rocket &&
-          ` (${data?.launch.rocket.rocket_name} | ${data?.launch.rocket.rocket_type})`}
-      </Title>
-      <p>{data?.launch.details}</p>
-      {!!data?.launch.links && !!data?.launch.links.flickr_images && (
+      <Details>{data?.launch.details}</Details>
+      {!!data?.launch?.links?.flickr_images && (
         <ImageList>
           {data?.launch.links.flickr_images.map((image: any) =>
             image ? <LazyImage imgSrc={image} key={image} /> : null

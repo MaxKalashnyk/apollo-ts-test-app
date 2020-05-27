@@ -7,16 +7,17 @@ import {
   Title,
 } from './styles';
 import { useLaunchListQuery } from '../../generated/graphql';
+import { Message } from '../LaunchProfile/styles';
 
 export const LaunchList: React.FC<IProps> = ({ changeId }) => {
   const { data, error, loading } = useLaunchListQuery();
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Message>Loading...</Message>;
   }
 
   if (error || !data) {
-    return <div>ERROR</div>;
+    return <Message>ERROR</Message>;
   }
 
   return (

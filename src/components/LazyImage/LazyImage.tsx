@@ -6,12 +6,8 @@ import { Image } from './styles';
 const LazyImage: React.FC<IProps> = ({ imgSrc }) => {
   const [imageLoaded, setImageLoading] = useState<boolean>(false);
 
-  // Our events handlers
   const handleLoad = useCallback(() => setImageLoading(true), []);
   const handleError = useCallback(() => setImageLoading(false), []);
-
-  // Here we use "[]" to fire useCallback only once (aka onMount)
-  const showImage = !imageLoaded ? { display: 'none' } : {};
 
   const ImageToRender = (
     <Image
@@ -19,7 +15,7 @@ const LazyImage: React.FC<IProps> = ({ imgSrc }) => {
       src={imgSrc}
       onLoad={handleLoad}
       onError={handleError}
-      style={showImage}
+      isHidden={!imageLoaded}
     />
   );
 
