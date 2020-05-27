@@ -4,6 +4,7 @@ import { User } from '../User';
 import { userLogin } from '../../utils/userLogin';
 import { LoginState, LoginDispatch } from '../../contexts/Login/types';
 import { useLoginDispatch, useLoginState } from '../../contexts/Login';
+import { Wrap, Button } from './styles';
 
 const _onInit = (dispatch: LoginDispatch) => {
   const storageLoginData = userLogin.getData();
@@ -52,16 +53,6 @@ export const Login: React.FC<IProps> = () => {
     });
   }, [loginDispatch]);
 
-  const signOut = useCallback(() => {
-    const auth2 = window.gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      userLogin.clearData();
-      loginDispatch({
-        type: 'logout',
-      });
-    });
-  }, [loginDispatch]);
-
   useEffect(() => {
     window.gapi.load('auth2', function () {
       window.gapi.auth2
@@ -70,15 +61,14 @@ export const Login: React.FC<IProps> = () => {
         })
         .then(() => _onInit(loginDispatch), _onError);
     });
-  }, []);
+  }, [loginDispatch]);
 
-  const { fullName, imageURL } = loginState;
+  const { authToken, imageURL } = loginState;
 
   return (
-    <div>
-      {!fullName ? <button onClick={signIn}>Log in</button> : null}
-      {fullName ? <button onClick={signOut}>Log out</button> : null}
-      {fullName && imageURL ? <User name={fullName} imgUrl={imageURL} /> : null}
-    </div>
+    <Wrap>
+      {!authToken ? <Button onClick={signIn}>Log in</Button> : null}
+      {authToken && imageURL ? <User imgUrl={imageURL} /> : null}
+    </Wrap>
   );
 };

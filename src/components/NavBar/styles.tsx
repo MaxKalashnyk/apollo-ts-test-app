@@ -15,15 +15,25 @@ export const ListItem = styled.li`
 `;
 
 export const StyledNavLink = styled(NavLink)`
+  position: relative;
+  z-index: 1;
   &:hover,
   &.active {
-    background-size: 4px 50px;
-    background: linear-gradient(
-      to bottom,
-      ${(props) => props.theme.color.americanPalette.brightYarrow} 0%,
-      ${(props) => props.theme.color.americanPalette.brightYarrow} 100%
-    );
-    background-position: 0 100%;
-    background-repeat: repeat-x;
+    &:before {
+      opacity: 1;
+    }
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    opacity: 0;
+    top: -2px;
+    left: -4px;
+    right: -4px;
+    bottom: -2px;
+    z-index: -1;
+    transition: background-color 0.4s ease-in-out;
+    background-color: ${(props) =>
+      props.theme.color.americanPalette.brightYarrow};
   }
 `;
