@@ -66,7 +66,7 @@ export const Login: React.FC<IProps> = () => {
     window.gapi.load('auth2', function () {
       window.gapi.auth2
         .init({
-          client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID_NETLIFY,
+          client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID_LOCALHOST,
         })
         .then(() => _onInit(loginDispatch), _onError);
     });
